@@ -13,3 +13,7 @@
 
 
 // TODO: 在此处引用程序需要的其他头文件
+typedef unsigned short int uint16_t;
+typedef unsigned int uint32_t;
+extern uint32_t now ;
+uint32_t millis();

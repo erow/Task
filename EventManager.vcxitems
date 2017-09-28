@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding ="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <PropertyGroup Label="Globals" >
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{a0a5da27-a000-4920-a360-540630ff3db8}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\Event.cpp" />
+<ClCompile Include="$(MSBuildThisFileDirectory)src\EventManager.cpp" />
+<ClCompile Include="$(MSBuildThisFileDirectory)src\Functions.cpp" />
+<ClCompile Include="$(MSBuildThisFileDirectory)src\stdafx.cpp" />
+<ClCompile Include="$(MSBuildThisFileDirectory)src\Timer.cpp" />
+<ClCompile Include="$(MSBuildThisFileDirectory)src\TimeSequence.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)src\Event.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\EventManager.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\Functions.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\stdafx.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\targetver.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\Timer.h" />
+<ClInclude Include="$(MSBuildThisFileDirectory)src\TimeSequence.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(MSBuildThisFileDirectory)keywords.txt" />
+<Text Include="$(MSBuildThisFileDirectory)library.properties" />
+<Text Include="$(MSBuildThisFileDirectory)src\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory).gitattributes" />
+<None Include="$(MSBuildThisFileDirectory).gitignore" />
+<None Include="$(MSBuildThisFileDirectory)EventManager.sln" />
+<None Include="$(MSBuildThisFileDirectory)library.properties.bak" />
+<None Include="$(MSBuildThisFileDirectory)readme.md" />
+<None Include="$(MSBuildThisFileDirectory)src\EventManager.vcxproj" />
+<None Include="$(MSBuildThisFileDirectory)src\EventManager.vcxproj.bak" />
+<None Include="$(MSBuildThisFileDirectory)src\EventManager.vcxproj.filters" />
+<None Include="$(MSBuildThisFileDirectory)src\EventManager.vcxproj.user" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\Event.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.log" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\Functions.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\main.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\stdafx.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\Timer.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\TimeSequence.obj" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\vc141.idb" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\vc141.pdb" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\CL.command.1.tlog" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\CL.read.1.tlog" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\CL.write.1.tlog" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\EventManager.lastbuildstate" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\link.command.1.tlog" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\link.read.1.tlog" />
+<None Include="$(MSBuildThisFileDirectory)src\Debug\EventManager.tlog\link.write.1.tlog" />
+  </ItemGroup>
+</Project>
