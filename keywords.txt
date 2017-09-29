@@ -1,22 +1,24 @@
 #######################################
-# Syntax Coloring Map For Rosserial
+# Syntax Coloring Map For EasyTask
 #######################################
 
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-Test	KEYWORD1
-
+TaskStatus	KEYWORD1
+EventSlot	KEYWORD1
+Task		KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-doSomething	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
 #######################################
+
+EventManager	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

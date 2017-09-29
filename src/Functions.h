@@ -1,40 +1,46 @@
 #pragma once
 #include"EventManager.h"
-typedef void(*NoneFun)();
+
+enum TaskStatus {
+	NORMAL,
+	PAUSE,
+	CONTINUE,
+	BREAK
+};
+typedef TaskStatus(*NoneFun)();
+template<typename T>
+using OneFun = TaskStatus(*)(T);
 class Function {
 public:
-	virtual float operator()() {
-		return 1.0f;
-	};//·µ»Ø½ø¶È
+	virtual TaskStatus operator()() {
+		return TaskStatus::NORMAL;
+	};//return control code
 };
 class NoneParam :public Function {
 public:
 	
 	NoneFun m_function;
 	NoneParam(NoneFun fun) { m_function = fun; };
-	float operator()() {
-		m_function();
-		return 1.f;
+	TaskStatus operator()() {
+		return m_function();
 	}
 };
 template<class T>
 class OneParam :public Function {
 private:
-	typedef void(*OneFun)(T);
 	EventSlot m_slot;
-	OneFun m_fun;
+	OneFun<T> m_fun;
 
 public:
-	OneParam(EventSlot slot, OneFun function) {
+	OneParam(EventSlot slot, OneFun<T> function) {
 		m_slot = slot;
 		m_fun = function;
 	}
-	float operator()() {
+	TaskStatus operator()() {
 		T value;
 		if (EventManager.poll_event(EventSlot::ir, value)) {
-			m_fun(value);
-			return 1.0f;
+			return m_fun(value);
 		}
-		return 0;
+		return PAUSE;
 	}
 };

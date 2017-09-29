@@ -1,6 +1,6 @@
 #include <ArduinoSTL.h>
 #include <EventManager.h>
-#include "TimeSequence.h"
+#include "Task.h"
 static FILE uartout = { 0 };
 static int uart_putchar(char c, FILE *stream)
 {
@@ -8,9 +8,24 @@ static int uart_putchar(char c, FILE *stream)
 	return 0;
 }
 
-TimeSequence s;
+Task s;
+
+template<unsigned long i>
+TaskStatus genFun() {
+	printf("[%d]: ", millis());
+	Serial.println(i);
+	return TaskStatus::NORMAL;
+}
+
+TaskStatus printEvent(int v)
+{
+	printf("[%d]: ir,value:", millis());
+	Serial.println(v);
+	return TaskStatus::NORMAL;
+}
 void setup()
 {
+	pinMode(2, INPUT);
 	// Start the UART
 	Serial.begin(115200);
 
@@ -21,29 +36,44 @@ void setup()
 	stdout = &uartout;
 
 	EventManager.slot_register(EventSlot::ir, 2);
-	s.delay(100, []()    {printf("[%d]: now is 100 \n", millis()); })
-		.delay(200, []() {printf("[%d]: now is 300 \n", millis()); })
-		.event<int>(EventSlot::ir, [](int v) {printf("[%d]: ir range :%d\n", millis(), v); })
-		.delay(100, []() {printf("[%d]: 100ms after ir\n", millis()); })
-		.event<int>(EventSlot::ir, [](int v) {printf("[%d]: ir range :%d\n", millis(), v); })
-		.delay(100, []() {printf("[%d]: 100ms after ir\n", millis());
-						  EventManager.happen_event(EventSlot::ir, rand()); })
-		.event<int>(EventSlot::ir, [](int v) {printf("[%d]: ir range :%d\n", millis(), v); });
+	s.delay(100, genFun<1>)
+		.delay(200, genFun<2>)
+		.event<int>(EventSlot::ir, printEvent)
+		.delay(300, genFun<3>)
+		.event<int>(EventSlot::ir, printEvent)
+		.delay(400, []() {return TaskStatus::CONTINUE; });
+
+			
+}
+
+void checkIR() {
+	static int last = 0;
+	int v = digitalRead(2);
+	if (v != last)
+	{
+		last = v;
+		EventManager.happen_event(EventSlot::ir,v);
+	}
 }
 
 int a = 1;
-void loop()
-{
-	s.check();
-	if (a==1&&millis() >= 1000)
+void simularIR() {
+	if (a == 1 && (millis() % 500) == 0)
 	{
-		EventManager.happen_event(EventSlot::ir, rand());
+		EventManager.happen_event(EventSlot::ir, 1);
 		a++;
 	}
 
-	if (a == 2 && millis() >= 1500)
+	if (a == 2 && (millis() % 1000)==0)
 	{
-		EventManager.happen_event(EventSlot::ir, rand());
-		a++;
+		EventManager.happen_event(EventSlot::ir, 0);
+		a=1;
 	}
+}
+void loop()
+{
+	//checkIR();
+	simularIR();
+	s.progress();
+	
 }

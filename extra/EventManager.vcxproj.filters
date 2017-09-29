@@ -15,52 +15,50 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="..\src\Event.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Event.h">
+    <ClInclude Include="..\src\EventManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="EventManager.h">
+    <ClInclude Include="..\src\Functions.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="TimeSequence.h">
+    <ClInclude Include="WProgram.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Functions.h">
+    <ClInclude Include="..\src\Task.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Timer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Event.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TimeSequence.cpp">
+    <ClCompile Include="..\src\EventManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Functions.cpp">
+    <ClCompile Include="..\src\Functions.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Task.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\keywords.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\library.properties">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="..\readme.md">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

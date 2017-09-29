@@ -13,7 +13,7 @@
 #include"EventManager.h"
 #include"Functions.h"
 
-class TimeSequence
+class Task
 {
 private:
 	struct trigger_pair
@@ -25,13 +25,13 @@ private:
 	uint32_t m_lasttime = 0;
 	int m_cur= 0;
 public:
-	TimeSequence();
-	~TimeSequence();
-	void check();
-	TimeSequence& delay(uint16_t ms, NoneFun call);
-	TimeSequence& delay(uint16_t ms, Function call);
+	Task();
+	~Task();
+	float progress();
+	Task& delay(uint16_t ms, NoneFun call);
+	Task& delay(uint16_t ms, Function call);
 	template<typename T>
-	TimeSequence& event(EventSlot slot, void(*call)(T)) {
+	Task& event(EventSlot slot, OneFun<T> call) {
 		sequence.push_back(trigger_pair{ 0,new OneParam<T>(slot,call) });
 		return *this;
 	}
