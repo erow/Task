@@ -8,7 +8,7 @@
 
 TaskStatus	KEYWORD1
 EventSlot	KEYWORD1
-Task		KEYWORD1
+Task	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
